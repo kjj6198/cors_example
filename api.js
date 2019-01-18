@@ -31,8 +31,9 @@ app.get('/trigger-preflight', (req, res) => {
 app.get('/cookie', (req, res) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.header('Access-Control-Allow-Credentials', 'true');
-  res.cookie('token', 'xxx-xxx-xxx', {
+  res.cookie('username', 'jack', {
     maxAge: 86400000,
+    secure: false,
     httpOnly: true
   });
   res.end('ok');

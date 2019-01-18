@@ -43,7 +43,7 @@ fetch(`${hostname}/trigger-preflight`, {
   .then(res => res.json())
   .then(log);
 
-fetch(`${hostname}/cookie`);
+fetch(`${hostname}/cookie`, { credentials: 'include' });
 
 setTimeout(() => {
   fetch(`${hostname}/cookie2`, {
