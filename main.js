@@ -46,10 +46,6 @@ fetch(`${hostname}/trigger-preflight`, {
 fetch(`${hostname}/cookie`, { credentials: 'include' });
 
 setTimeout(() => {
-  fetch(`${hostname}/cookie2`, {
-    credentials: 'include'
-  });
-
   fetch(`${hostname}/cookie`, {
     credentials: 'include',
     method: 'POST',

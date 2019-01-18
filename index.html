@@ -49,7 +49,7 @@ See https://www.chromestatus.com/feature/5629709824032768 for more details
         use fetch API <strong>with</strong> Access-Control-Allow-Origin header.
       </li>
       <li>
-        trigger preflight. because Access-Control-Allow-Headers didn't contain
+        preflight fails. because Access-Control-Allow-Headers didn't contain
         `Content-Type`
         <pre class="warning">
           <code>
@@ -57,6 +57,11 @@ Access to fetch at 'http://localhost:3001/trigger-preflight' from origin 'http:/
 Request header field content-type is not allowed by Access-Control-Allow-Headers in preflight response.
           </code>
         </pre>
+      </li>
+      <li>
+        sending cookie: Access-Control-Allow-Credentials must be true, and
+        Access-Control-Allow-Origin can not be wildcard. Ajax, fetch need to add
+        `credentials: include` or `withCredentials: true` to send cookie.
       </li>
     </ul>
   </body>

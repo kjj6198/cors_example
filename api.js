@@ -42,7 +42,6 @@ app.get('/cookie', (req, res) => {
 app.post('/cookie', (req, res) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.header('Access-Control-Allow-Credentials', 'true');
-  console.log(req.cookies);
   res.end('ok');
 });
 
