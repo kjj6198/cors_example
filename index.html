@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>CORS Test</title>
+
+    <style>
+      .warn {
+        color: red;
+      }
+
+      .warning {
+        color: red;
+        background-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CORS</h1>
+    <ul>
+      <li>
+        use fetch API without header Access-Control-Allow-Origin, will be
+        forbiddened by CORS.
+        <pre class="warning">
+          <code class="">
+Access to fetch at 'http://localhost:3001/cors-forbidden' from origin 'http://localhost:3000' has been blocked by CORS policy:
+No 'Access-Control-Allow-Origin' header is present on the requested resource.
+If an opaque response serves your needs,
+set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+          </code>
+        </pre>
+        <p id="cors-forbidden" class="warn"></p>
+      </li>
+      <li>
+        use fetch API without header Access-Control-Allow-Origin and use
+        `no-cors` mode. there is no error about CORS, but it won't get response
+        correctly. use no-cors is usually a bad idea.
+        <pre class="warning">
+        <code>
+Cross-Origin Read Blocking (CORB) blocked cross-origin response http://localhost:3001/cors-forbidden with MIME type application/json.
+See https://www.chromestatus.com/feature/5629709824032768 for more details
+        </code>
+        <p id="with-no-cors"></p>
+      </pre>
+      </li>
+      <li>
+        use fetch API <strong>with</strong> Access-Control-Allow-Origin header.
+      </li>
+      <li>
+        trigger preflight. because Access-Control-Allow-Headers didn't contain
+        `Content-Type`
+        <pre class="warning">
+          <code>
+Access to fetch at 'http://localhost:3001/trigger-preflight' from origin 'http://localhost:3000' has been blocked by CORS policy:
+Request header field content-type is not allowed by Access-Control-Allow-Headers in preflight response.
+          </code>
+        </pre>
+      </li>
+    </ul>
+  </body>
+  <script src="/main.js"></script>
+</html>
